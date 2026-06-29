@@ -6,7 +6,6 @@ class ProjectForm(forms.ModelForm):
         model = Project
         exclude = ("posted_by",)
 
-    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

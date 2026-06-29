@@ -28,6 +28,8 @@ body {
     border-radius: 10px;
 }
 
+/* CSS For Project CARD */
+
 .project-card{
     transition:.25s ease;
     border-radius:18px;
@@ -63,4 +65,58 @@ body {
 
 .project-file a:hover{
     text-decoration:underline;
+}
+
+/* Project Details */
+
+.info-box{
+    background:#f8f9fa;
+    border-radius:12px;
+    padding:1rem;
+    height:100%;
+}
+
+.task-content{
+    background:#fff;
+    padding:1rem;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.task-content img{
+    max-width:100%;
+    height:auto;
+    border-radius:10px;
+}
+
+.task-content table{
+    width:100%;
+    margin:1rem 0;
+}
+
+.task-content pre{
+    background:#212529;
+    color:#fff;
+    padding:1rem;
+    border-radius:10px;
+    overflow:auto;
+}
+
+.task-content blockquote{
+    border-left:4px solid #198754;
+    padding-left:1rem;
+    color:#6c757d;
+}
+
+.task-content h1,
+.task-content h2,
+.task-content h3,
+.task-content h4,
+.task-content h5{
+    margin-top:1.5rem;
+    margin-bottom:.75rem;
+}
+
+.task-content p:last-child{
+    margin-bottom:0;
 }
