@@ -1,0 +1,91 @@
+{% extends 'master/base.html' %}
+{% load humanize %}
+
+{% block title %}
+  Projects | 🗂 Hold YOUR Project
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="fw-bold mb-1">📁 My Projects
+            <span class="badge bg-success fs-5">{{ projects|length }} Project{{ projects|pluralize }}</span>
+        </h2>
+        <p class="text-muted mb-0">Manage all your uploaded projects.</p>
+        
+    </div>
+    
+    <a href="{% url 'add_project' %}" class="btn btn-success btn-lg shadow-sm">
+    <i class="bi bi-plus-circle-fill me-2"></i>
+    Add New Project
+    </a>
+    </div>
+    
+    {% include 'master/messages.html' %}
+    <div class="row g-4">
+      {% for x in projects %}
+        <div class="col-lg-4 col-md-6">
+          <div class="card project-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="project-number">#{{ forloop.counter }}</span>
+
+                <i class="bi bi-folder2-open fs-2 text-success"></i>
+              </div>
+
+              <h5 class="fw-bold">{{ x.name|truncatechars:35 }}</h5>
+
+              <p class="text-muted mb-3">{{ x.short_note|truncatechars:90 }}</p>
+
+              <div class="project-file mb-3">
+                <small class="text-muted d-block">Project File</small>
+                
+                {% if x.project %}
+                  <a href="{{ x.project.url }}" download class="text-decoration-none fw-semibold">Click here to Download <i class="bi bi-download me-2"></i></a>
+                  {% else %}
+                  Not Uploaded
+                {% endif %}
+                  
+              </div>
+
+              <div class="small text-secondary mb-4">
+                <i class="bi bi-clock-history"></i>
+                {{ x.updated_at|naturaltime }}
+              </div>
+
+              <div class="mt-auto d-grid gap-2">
+                <a href="{% url 'view_project' x.id %}" class="btn btn-success">
+                  <i class="bi bi-eye"></i>
+                  View
+                </a>
+
+                <div class="row g-2">
+                  <div class="col">
+                    <a href="{% url 'update_project' x.id %}" class="btn btn-warning w-100"><i class="bi bi-pencil"></i></a>
+                  </div>
+
+                  <div class="col">
+                    <a href="{% url 'delete_project' x.id %}" class="btn btn-danger w-100"><i class="bi bi-trash"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="card text-center py-5">
+            <div class="card-body">
+              <i class="bi bi-folder-x display-3 text-secondary"></i>
+
+              <h3 class="mt-3">No Projects Found</h3>
+
+              <p class="text-muted">Upload your first project to get started.</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

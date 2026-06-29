@@ -1,0 +1,85 @@
+{% extends 'master/base.html' %}
+
+{% block title %}
+  {{ status }} Project | 🗂 Hold YOUR Project
+{% endblock %}
+
+{% block content %}
+    {{ form.media }}
+
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card">
+          <div class="card-body p-4 p-lg-5">
+            <div class="mb-4">
+              <h2 class="fw-bold mb-1">
+                <i class="bi bi-folder-plus text-success"></i>
+                {{ status }} Project
+              </h2>
+
+              <p class="text-muted mb-0">Upload your project along with task details and supporting files.</p>
+            </div>
+
+            {% include 'master/messages.html' %}
+
+            <form method="post" enctype="multipart/form-data" novalidate>
+              {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Project Name</label>
+
+                {{ form.name }}
+
+                {% if form.name.errors %}
+                  <div class="text-danger small mt-1">{{ form.name.errors }}</div>
+                {% endif %}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Short Note</label>
+
+                {{ form.short_note }}
+
+                <div class="form-text">Briefly describe your project.</div>
+
+                {% if form.short_note.errors %}
+                  <div class="text-danger small mt-1">{{ form.short_note.errors }}</div>
+                {% endif %}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Task Details</label>
+
+                {{ form.task_details }}
+
+                {% if form.task_details.errors %}
+                  <div class="text-danger small mt-1">{{ form.task_details.errors }}</div>
+                {% endif %}
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Upload Project (.zip)</label>
+
+                {{ form.project }}
+
+                {% if form.project.errors %}
+                  <div class="text-danger small mt-1">{{ form.project.errors }}</div>
+                {% endif %}
+              </div>
+
+              <div class="d-flex justify-content-end gap-2">
+                <a href="{% url 'my_projects' %}" class="btn btn-outline-secondary">Cancel</a>
+
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-cloud-upload me-2"></i>
+                  Save Project
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

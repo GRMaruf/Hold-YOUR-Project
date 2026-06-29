@@ -1,0 +1,77 @@
+{% extends 'master/base.html' %}
+
+{% block title %}
+  {{ project.name }} | 🗂 Hold YOUR Project
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="card">
+      <div class="card-body p-4 p-lg-5">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-4">
+          <div>
+            <span class="badge bg-success mb-2">Project</span>
+
+            <h1 class="fw-bold mb-3">{{ project.name }}</h1>
+
+            {% if project.short_note %}
+              <p class="lead text-muted mb-0">{{ project.short_note }}</p>
+            {% endif %}
+          </div>
+
+          <div class="text-lg-end">
+            {% if project.project %}
+              <a href="{{ project.project.url }}" class="btn btn-success btn-lg" download>
+                <i class="bi bi-download me-2"></i>
+                Download Project
+              </a>
+            {% else %}
+              No Project File Uploaded
+            {% endif %}
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-6">
+            <div class="info-box">
+              <small class="text-muted d-block">
+                <i class="bi bi-calendar-plus"></i>
+                Posted
+              </small>
+
+              <strong>{{ project.posted_at|date:'F d, Y • h:i A' }}</strong>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="info-box">
+              <small class="text-muted d-block">
+                <i class="bi bi-clock-history"></i>
+                Last Updated
+              </small>
+
+              <strong>{{ project.updated_at|date:'F d, Y • h:i A' }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="fw-bold mb-3">Task Details</h3>
+
+        <div class="task-content">{{ project.task_details|safe }}</div>
+
+        <div class="d-flex justify-content-end gap-2 mt-4">
+          <a href="{% url 'my_projects' %}" class="btn btn-outline-secondary px-4">
+            <i class="bi bi-arrow-left me-2"></i>
+            Go Back
+          </a>
+          <a href="{% url 'update_project' project.id %}" class="btn btn-warning px-4">
+            <i class="bi bi-pencil-square me-2"></i>
+            Update Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

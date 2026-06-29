@@ -1,0 +1,67 @@
+.success_message,
+.error_message,
+.warning_message,
+.info_message,
+.debug_message{
+
+    display:block;
+    width:100%;
+    padding:14px 18px;
+    margin:15px 0;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:500;
+    border-left:6px solid;
+    box-shadow:0 3px 8px rgba(0,0,0,.08);
+
+}
+
+/* Success */
+
+.success_message{
+
+    color:#0f5132;
+    background:#d1e7dd;
+    border-color:#198754;
+
+}
+
+/* Error */
+
+.error_message{
+
+    color:#842029;
+    background:#f8d7da;
+    border-color:#dc3545;
+
+}
+
+/* Warning */
+
+.warning_message{
+
+    color:#664d03;
+    background:#fff3cd;
+    border-color:#ffc107;
+
+}
+
+/* Info */
+
+.info_message{
+
+    color:#055160;
+    background:#cff4fc;
+    border-color:#0dcaf0;
+
+}
+
+/* Debug */
+
+.debug_message{
+
+    color:#41464b;
+    background:#e2e3e5;
+    border-color:#6c757d;
+
+}

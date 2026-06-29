@@ -1,0 +1,78 @@
+{% extends 'master/base.html' %}
+
+{% block title %}
+  Home | 🗂 Hold YOUR Project
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-9 col-lg-10">
+
+      <div class="card border-0 shadow-lg rounded-4">
+        <div class="card-body p-5 text-center">
+
+          <div class="mb-4">
+            <i class="bi bi-kanban-fill text-success display-2"></i>
+          </div>
+
+          <h1 class="display-5 fw-bold mb-3">
+            Welcome to <span class="d-block text-success">🗂 Hold YOUR Project</span>
+          </h1>
+
+          {% include 'master/messages.html' %}
+
+          <p class="lead text-muted mx-auto mb-5" style="max-width: 700px;">
+            Organize your work efficiently by creating, updating, and managing
+            projects from one simple and user-friendly dashboard.
+          </p>
+
+          <div class="row g-4 mb-5">
+            <div class="col-md-4">
+              <div class="border rounded-3 p-4 h-100">
+                <i class="bi bi-list-check fs-1 text-success"></i>
+                <h5 class="mt-3">Manage Projects</h5>
+                <p class="text-muted mb-0">
+                  Create, edit and organize your projects with ease.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="border rounded-3 p-4 h-100">
+                <i class="bi bi-lightning-charge-fill fs-1 text-warning"></i>
+                <h5 class="mt-3">Stay Productive</h5>
+                <p class="text-muted mb-0">
+                  Keep everything organized in one central place.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="border rounded-3 p-4 h-100">
+                <i class="bi bi-shield-check fs-1 text-primary"></i>
+                <h5 class="mt-3">Secure Access</h5>
+                <p class="text-muted mb-0">
+                  Access your data safely with authenticated accounts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{% url 'my_projects' %}" class="btn btn-success btn-lg px-4">
+              <i class="bi bi-list me-2"></i>View All Projects
+            </a>
+
+            <a href="{% url 'signout' %}" class="btn btn-outline-danger btn-lg px-4">
+              <i class="bi bi-box-arrow-right me-2"></i>Logout
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
